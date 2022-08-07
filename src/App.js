@@ -18,14 +18,10 @@ function App() {
           return (<span className='green'>{el}</span>)
 
         }
-        return (<span>{el}</span>)}))
-      
-     
+        return (<span>{el}</span>)}))  
     }else{
-      setIsErorr(true)
-      
+      setIsErorr(true)  
     }
-
   }
  
 
