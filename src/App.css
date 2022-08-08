@@ -1,9 +1,9 @@
 .container__text{
   margin:30px auto;
-  border: 1px solid black;
-  width: 400px;
-  height: 100px;
-  overflow: hidden;
+  /* border: 1px solid black; */
+  width: 500px;
+  /* height: 100px; */
+  /* overflow: hidden; */
   padding: 35px 5px;
   font-size: 20px;
   text-align: justify;
@@ -12,7 +12,7 @@
   opacity: 0.5;
   
 }
-.letter__print{
+.letter__printed{
   opacity: 1;
 }
 .letter__green{
@@ -20,33 +20,32 @@
     background: limegreen;
     padding: 1px 3px 1px 3px;
     color: white;
-   /* animation: pointerLetter 0.7s steps(2, end) infinite; */
 }
-@keyframes pointerLetter {
-  0%{
-    background: limegreen;
-    color:white;
-  }
-  100%{
-    background: white;
-    /* color:black; */
-  }
-  
-}
+
+
 .error{
   background: red;
   
 }
-.red{
-  border: 4px solid red;
-}
+
 .input{
-  width: 400px;
+  width: 500px;
   height: 35px;
+  overflow: hidden;
   font-size: 20px;
-  padding: 5px;
+  padding: 5px 8px;
   font-family: 'Arial';
+  resize: none;
+  border-radius: 10px;
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+  background-color: rgba(0,0,0,0.05);
 }
+.red{
+  border: 2px solid red;
+}
+
 
 
 /* .text{
