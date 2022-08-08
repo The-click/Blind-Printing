@@ -7,26 +7,24 @@
   padding: 35px 5px;
   font-size: 20px;
   text-align: justify;
+  color:rgba(0,0,0,0.5)
 }
-.letter{
-  opacity: 0.5;
-  
-}
-.letter__printed{
-  opacity: 1;
-}
-.letter__green{
-  opacity: 1;
+
+
+.letter__green, .error{
     background: limegreen;
     padding: 1px 3px 1px 3px;
     color: white;
 }
-
-
 .error{
   background: red;
   
 }
+.letter__printed{
+  color:black;
+}
+
+
 
 .input{
   width: 500px;
