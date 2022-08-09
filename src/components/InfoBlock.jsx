@@ -1,10 +1,13 @@
 import React from 'react';
 import Accuracy from './Accuracy';
+import SpeedPrinted from './SpeedPrinted';
 
-function InfoBlock({countError, text}) {
+function InfoBlock() {
     return (
-        <div>
-            <Accuracy countError = {countError} text = {text}> </Accuracy>
+        <div className='info-block'>
+             <SpeedPrinted></SpeedPrinted>
+            <Accuracy> </Accuracy>
+           
             
 
             

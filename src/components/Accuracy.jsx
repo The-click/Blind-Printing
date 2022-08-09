@@ -1,13 +1,16 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
+import store from '../store/store';
 
-function Accuracy({text, countError}) {
-    let countAccuracy = (text.length / 100) * countError;
+ const Accuracy = observer(() => {
+    let countAccuracy = (100 - (100 / store.printText.length ) * store.countError).toFixed(1);
 
     return (
-        <div>
-            {(100 - countAccuracy).toFixed(1)};
+        <div className='accuracy'>
+            <div>Точность</div>
+            <span className='info-value'>{countAccuracy !== 'NaN' ? countAccuracy : '100.0'}</span>%
         </div>
     );
-}
+})
 
 export default Accuracy;
