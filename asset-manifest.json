@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Blind-Printing/static/css/main.e2b89656.css",
+    "main.js": "/Blind-Printing/static/js/main.02f334ca.js",
+    "static/media/1490.gif": "/Blind-Printing/static/media/1490.b6e0f3891d04f322c2e5.gif",
+    "index.html": "/Blind-Printing/index.html",
+    "main.e2b89656.css.map": "/Blind-Printing/static/css/main.e2b89656.css.map",
+    "main.02f334ca.js.map": "/Blind-Printing/static/js/main.02f334ca.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e2b89656.css",
+    "static/js/main.02f334ca.js"
+  ]
+}
