@@ -7,5 +7,11 @@ export const getTextService = async () => {
         return await text[0].replace(/\s+/g, ' ');     
       } catch(err) {
         console.log(err);
+        setTimeout(() => {
+          alert('Упс:) Что-то пошло не так. Перезагрузим страницу или попробуйте позже');
+          window.location.reload();
+
+        }, 2000);
+       
       }
 }

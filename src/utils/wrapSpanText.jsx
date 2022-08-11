@@ -4,9 +4,6 @@ export const wrapSpanText = (lenText = store.printText.length) => {
     let text = store.fullText;
         return text.split('').map((el, i) => {
           let classElement = '';
-          if (i < lenText){
-            classElement = 'letter__printed';
-          }
           if ((i === lenText)){
             classElement = 'letter__green';
           }
