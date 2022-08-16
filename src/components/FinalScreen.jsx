@@ -1,11 +1,19 @@
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useEffect } from 'react';
 import infoStore from '../store/infoStore';
 import store from '../store/store';
+import { useNavigate} from 'react-router-dom';
 
 const FinalScreen = observer(()  => {
+    let navigate = useNavigate();
+    useEffect(() => {
+        if (!store.isEnd){
+            navigate('/start');
+        }
+
+    }, [])
     function clickHandler(){
-        window.location.reload();
+        navigate('/start');
     }
 
     return (

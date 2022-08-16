@@ -5,7 +5,14 @@ import loader from '../img/1490.gif';
 function Loader() {
     return (
         <div className='preloader'>
-            <img src={loader} alt="loader"></img>
+           <div class="spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     );
 }

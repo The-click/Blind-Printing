@@ -6,14 +6,26 @@ class Store{
     printText = [];
     countPrintedLetter = 0;
     isEnd = false;
+    lang = '';
 
     constructor(){
         makeAutoObservable(this);
     }
+    setInitialState(){
+        this.fullText = '';
+        this.printText = [];
+        this.countPrintedLetter = 0;
+        this.isEnd = false;
+        this.lang = '';
+    }
+
+    changeLangText(lang){
+        this.lang = lang;
+    }
 
     setNewText(text){
         this.fullText = text; 
-
+        this.countPrintedLetter = 0;
     }
 
     setPrintText(text){

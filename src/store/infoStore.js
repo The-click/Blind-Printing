@@ -6,10 +6,16 @@ class InfoStore{
     stopPrintedData = {isStop:false, timeStop: 0, startTime:0};
     speedPrint = 0;
     accuracy = 0;
-
+    
 
     constructor(){
         makeAutoObservable(this);
+    }
+    setInitialState(){
+        this.countError = 0;
+        this.stopPrintedData = {isStop:false, timeStop: 0, startTime:0};
+        this.speedPrint = 0;
+        this.accuracy = 0;
     }
     setSpeedPrint(speed){
         this.speedPrint = speed;

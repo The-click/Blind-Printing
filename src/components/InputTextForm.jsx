@@ -41,7 +41,7 @@ const InputTextForm = observer(() => {
       
     return (
         <div>
-            <textarea onChange={changeHandler} value={printText} className={isError ? 'red input' : 'input'} placeholder='Начните печатать текст...' >
+            <textarea onChange={changeHandler} value={printText} className={isError ? 'red input' : 'input'} placeholder='Начните печатать здесь текст...' >
             </textarea>    
         </div>
     );
