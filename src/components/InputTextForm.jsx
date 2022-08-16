@@ -1,13 +1,22 @@
 import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import infoStore from '../store/infoStore';
 import store from '../store/store';
 
 const InputTextForm = observer(() => {
     const [printText, setPrintText] = useState('');
+    const textAreaEl = useRef(null);
     const [isError, setIsError] = useState(false);    
     const [scrollInput, setScrollInput] = useState(0);
     let text = store.fullText;
+    useEffect(() => {
+      if (infoStore.stopPrintedData.isStop){
+        textAreaEl.current.blur();
+      }else{
+        textAreaEl.current.focus();
+      }
+    }, [infoStore.stopPrintedData.isStop])
    
     function changeHandler(e){
         if (store.isEnd){
@@ -41,7 +50,12 @@ const InputTextForm = observer(() => {
       
     return (
         <div>
-            <textarea onChange={changeHandler} value={printText} className={isError ? 'red input' : 'input'} placeholder='Начните печатать здесь текст...' >
+            <textarea autoFocus={true} 
+                      onChange={changeHandler} 
+                      value={printText} 
+                      className={isError ? 'red input' : 'input'} 
+                      ref={textAreaEl}
+                      placeholder='Начните печатать текст...' >
             </textarea>    
         </div>
     );

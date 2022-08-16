@@ -26,7 +26,6 @@ import { useNavigate} from 'react-router-dom';
       navigate('/start');
       return;
     }
-    console.log('hello');
     async function setNewText(){
       let data = await getTextService(store.lang);
       store.setNewText(data);
@@ -38,7 +37,6 @@ import { useNavigate} from 'react-router-dom';
 
   function stopHandler(e){
     if (e.code !== 'Escape' || store.countPrintedLetter === 0) return;
-    e.target.blur();
     infoStore.stopPrint();
   }
 

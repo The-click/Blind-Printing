@@ -75,6 +75,15 @@
   box-sizing: border-box;
   border: none;
   background-color: rgba(0,0,0,0.05);
+  position:relative;
+  overflow:hidden;
+}
+.input:before{
+  content:'';
+  height: 100%;
+  width: 0%;
+  
+
 }
 .red{
   box-shadow: 0px 0px 5px 2px red;
