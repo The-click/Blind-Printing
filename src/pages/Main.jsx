@@ -1,13 +1,13 @@
 
 import { useEffect} from 'react';
 import '../App.css';
-import InfoBlock from './InfoBlocks/InfoBlock';
+import InfoBlock from '../components/InfoBlocks/InfoBlock';
 import { observer } from "mobx-react-lite" 
 import store from '../store/store';
-import InputTextForm from './InputTextForm';
+import InputTextForm from '../components/InputTextForm';
 import { getTextService } from '../API/GetTextService';
 import { wrapSpanText } from '../utils/wrapSpanText';
-import ControlButtons from './ControlButtons';
+import ControlButtons from '../components/ControlButtons';
 import StopScreen from './StopScreen';
 import Loader from '../utils/Loader';
 import infoStore from '../store/infoStore';

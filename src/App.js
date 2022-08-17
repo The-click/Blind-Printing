@@ -1,17 +1,14 @@
-import HelloScreen from './components/HelloScreen';
-import Main from './components/Main';
-import FinalScreen from './components/FinalScreen';
 import React from 'react';
-
 import { Routes, Navigate } from 'react-router-dom';
 import { Route } from 'react-router-dom/umd/react-router-dom.development';
-// import { Routes } from 'react-router-dom/umd/react-router-dom.development';
+import HelloScreen from './pages/HelloScreen';
+import Main from './pages/Main';
+import FinalScreen from './pages/FinalScreen';
 
 
 
 
  const App = () =>  {
-
 
   return (
     <div className="App">

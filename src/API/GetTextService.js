@@ -11,7 +11,7 @@ export const getTextService = async (lang) => {
       }else{
         response = await fetch('https://fish-text.ru/get');
         text = await response.json();
-        return text.text;
+        return text.text.replace('—', '');
       } 
     } catch(err) {
         console.log(err);

@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useRef } from 'react';
 import { useEffect } from 'react';
 import infoStore from '../store/infoStore';
-import ControlButtons from './ControlButtons';
+import ControlButtons from '../components/ControlButtons';
 
 const StopScreen = observer((props) => {
     const coverEl = useRef(null);
