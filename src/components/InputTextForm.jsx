@@ -38,6 +38,8 @@ const InputTextForm = observer(() => {
           if (isError) setIsError(false);
           setPrintText(printedText);
           store.changePrintText(lenText);
+          e.target.style.setProperty('--length-progress', (550 * (lenText / text.length) - 550 ) + 'px');
+         
         }else{
             if (!isError) {
                 infoStore.addCountError();
@@ -49,7 +51,7 @@ const InputTextForm = observer(() => {
       }
       
     return (
-        <div>
+        <div className='input-wrap'>
             <textarea autoFocus={true} 
                       onChange={changeHandler} 
                       value={printText} 

@@ -1,3 +1,7 @@
+:root{
+  --length-progress:-560px;
+
+}
 .App{
   display: flex;
   gap: 30px;
@@ -61,7 +65,12 @@
 
 
 
-
+.input-wrap{
+  border-radius: 10px;
+  padding: 3px;
+  overflow: hidden;
+  
+}
 .input{
   width: 550px;
   height: 35px;
@@ -75,16 +84,10 @@
   box-sizing: border-box;
   border: none;
   background-color: rgba(0,0,0,0.05);
-  position:relative;
-  overflow:hidden;
+  box-shadow: var(--length-progress) -1px 2px 5px green;
+  transition: all 0.1s ease;
 }
-.input:before{
-  content:'';
-  height: 100%;
-  width: 0%;
-  
 
-}
 .red{
   box-shadow: 0px 0px 5px 2px red;
 }
