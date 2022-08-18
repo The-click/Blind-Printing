@@ -15,11 +15,8 @@ export const getTextService = async (lang) => {
       } 
     } catch(err) {
         console.log(err);
-        setTimeout(() => {
-          alert('Что-то пошло не так. Перезагрузим страницу или попробуйте позже');
-          window.location.reload();
-
-        }, 2000);
+        alert('Что-то пошло не так. Перезагрузите страницу или попробуйте позже')
+  
        
       }
 }

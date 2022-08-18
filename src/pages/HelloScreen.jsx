@@ -14,7 +14,6 @@ const HelloScreen = observer((props) => {
         store.setInitialState();
         infoStore.setInitialState();
         store.changeLangText(lang);
-
         navigate('/main');
     }
     return (

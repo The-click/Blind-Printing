@@ -1,16 +1,18 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
+import { useNavigate } from 'react-router-dom/umd/react-router-dom.development';
 import infoStore from '../store/infoStore';
 import store from '../store/store';
 
 const ControlButtons = observer((props) => {
+  let navigate = useNavigate();
 
     function stoPrintHandler(){
       if (store.countPrintedLetter > 0) infoStore.stopPrint();
       }
 
       function restartHandler(){
-        window.location.reload();
+        navigate('/start');
       }
     return (
         <div className='control-buttons'>
