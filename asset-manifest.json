@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/Blind-Printing/static/css/main.e2b89656.css",
-    "main.js": "/Blind-Printing/static/js/main.02f334ca.js",
+    "main.css": "/Blind-Printing/static/css/main.ad8e5094.css",
+    "main.js": "/Blind-Printing/static/js/main.3e8c2cae.js",
+    "static/media/v960-ning-31.jpg": "/Blind-Printing/static/media/v960-ning-31.265cd9423359828ac071.jpg",
     "static/media/1490.gif": "/Blind-Printing/static/media/1490.b6e0f3891d04f322c2e5.gif",
     "index.html": "/Blind-Printing/index.html",
-    "main.e2b89656.css.map": "/Blind-Printing/static/css/main.e2b89656.css.map",
-    "main.02f334ca.js.map": "/Blind-Printing/static/js/main.02f334ca.js.map"
+    "main.ad8e5094.css.map": "/Blind-Printing/static/css/main.ad8e5094.css.map",
+    "main.3e8c2cae.js.map": "/Blind-Printing/static/js/main.3e8c2cae.js.map"
   },
   "entrypoints": [
-    "static/css/main.e2b89656.css",
-    "static/js/main.02f334ca.js"
+    "static/css/main.ad8e5094.css",
+    "static/js/main.3e8c2cae.js"
   ]
 }
