@@ -1,61 +1,51 @@
 import { observer } from 'mobx-react-lite';
-import React, { useEffect, useState } from 'react';
-import { useRef } from 'react';
+import React, {useEffect, useRef, useState } from 'react';
 import infoStore from '../store/infoStore';
+
 import store from '../store/store';
 
 const InputTextForm = observer(() => {
     const [printText, setPrintText] = useState('');
-    const textAreaEl = useRef(null);
-    const [isError, setIsError] = useState(false);    
-    const [scrollInput, setScrollInput] = useState(0);
+    const textAreaEl = useRef();
     let text = store.fullText;
+
     useEffect(() => {
       if (infoStore.stopPrintedData.isStop){
         textAreaEl.current.blur();
       }else{
         textAreaEl.current.focus();
       }
-    }, [infoStore.stopPrintedData.isStop])
+    }, [infoStore.stopPrintedData.isStop]);
    
     function changeHandler(e){
-        if (store.isEnd){
-          e.target.blur();
-          return;}
+        let inputText = e.target.value;
 
-        let printedText = e.target.value;
-        let lenText = printedText.length;
+        e.target.scrollTop = e.target.scrollHeight;
 
-
-        if ((e.target.scrollTop - scrollInput) > 10 ){
-          e.target.scrollTop += 50;
-          setScrollInput(e.target.scrollTop);
-        }
-
-        if (printedText.length - printText.length !== 1) return;
-
-        if(text.substring(0, lenText) === printedText){
-          if (isError) setIsError(false);
-          setPrintText(printedText);
-          store.changePrintText(lenText);
-          e.target.style.setProperty('--length-progress', (550 * (lenText / text.length) - 550 ) + 'px');
-         
+        if (inputText.length - printText.length !== 1) return;
+        
+        if(text[inputText.length - 1] === inputText[inputText.length - 1]){
+          setPrintText(inputText);
+          store.changePrintText();
+          e.target.style.setProperty('--length-progress', (550 * (inputText.length / text.length) - 550 ) + 'px');
         }else{
-            if (!isError) {
-                infoStore.addCountError();
-                setIsError(true);
-                store.setErrorText(lenText - 1);
+            if (!store.errorData.isError) {
+                store.setErrorText(inputText.length - 1);
             }
         }
-
+      }
+    
+      function stopPrint(e){
+        if (e.code !== 'Escape' || store.countPrintedLetter === 0) return;
+        infoStore.stopPrint();
       }
       
     return (
-        <div className='input-wrap'>
+        <div className='input-wrap' onKeyDown={stopPrint}>
             <textarea autoFocus={true} 
                       onChange={changeHandler} 
                       value={printText} 
-                      className={isError ? 'red input' : 'input'} 
+                      className={store.errorData.isError ? 'red input' : 'input'} 
                       ref={textAreaEl}
                       placeholder='Начните печатать текст...' >
             </textarea>    

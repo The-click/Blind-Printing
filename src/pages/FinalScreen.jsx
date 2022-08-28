@@ -3,17 +3,20 @@ import React, { useEffect } from 'react';
 import infoStore from '../store/infoStore';
 import store from '../store/store';
 import { useNavigate} from 'react-router-dom';
+import Loader from '../utils/Loader';
 
 const FinalScreen = observer(()  => {
     let navigate = useNavigate();
+
     useEffect(() => {
         if (!store.isEnd){
             navigate('/start');
         }
 
     }, [])
-    function clickHandler(){
-        navigate('/start');
+
+    if (infoStore.speedPrint === 0){
+        return <Loader></Loader>
     }
 
     return (
@@ -24,7 +27,7 @@ const FinalScreen = observer(()  => {
                 <span>Точность: <span className='info-value'>{infoStore.accuracy}</span>%</span>
                 <span>Количество символов: <span className='info-value'>{store.countPrintedLetter}</span></span>
 
-                <button className='control-button' onClick={clickHandler}>Повторить</button>
+                <button className='control-button' onClick={() => navigate('/start')}>Повторить</button>
             </div>
             
         </div>

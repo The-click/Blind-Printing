@@ -2,62 +2,40 @@ import {  makeAutoObservable } from "mobx"
 
 class Store{
 
-    fullText = '';
-    printText = [];
+    fullText = [];
     countPrintedLetter = 0;
     isEnd = false;
-    lang = '';
+    errorData = {isError: false, countError:0}
 
     constructor(){
         makeAutoObservable(this);
     }
+
     setInitialState(){
-        this.fullText = '';
-        this.printText = [];
+        this.fullText = [];
         this.countPrintedLetter = 0;
         this.isEnd = false;
-        this.lang = '';
-    }
-
-    changeLangText(lang){
-        this.lang = lang;
+        this.errorData = {isError: false, countError:0};
     }
 
     setNewText(text){
         this.fullText = text; 
-        this.countPrintedLetter = 0;
     }
 
-    setPrintText(text){
-        this.printText = text; 
-    }
-
-    changePrintText(len){
+    changePrintText(){
+        if (this.errorData.isError){ 
+            this.errorData ={...this.errorData, isError:false};
+        };
         this.countPrintedLetter += 1;
-        this.printText[len - 1] = (<span className='letter__printed' key={(len - 1) + this.fullText[len - 1]}>
-                                      {this.fullText[len - 1]}
-                                   </span>);
-        
-        if (len < this.fullText.length ){
-            this.printText[len] = (<span className='letter__green' key={(len) + this.fullText[len]}>
-                                        {this.fullText[len]}
-                                   </span>);
-        } else{
+        if (this.countPrintedLetter === this.fullText.length) {
             this.isEnd = true;
-        }
-                            
+        };                          
     }
 
-    setErrorText(indexLetter){
-        this.printText[indexLetter] = (<span className='error' key={(indexLetter) + this.fullText[indexLetter]}>
-                                            {this.fullText[indexLetter]}
-                                      </span>);
+    setErrorText(){
+        this.errorData = {isError:true, countError:++this.errorData.countError};
     }
-
-
 
 }
 
 export default new Store()
-
-

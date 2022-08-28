@@ -13,9 +13,9 @@ const HelloScreen = observer((props) => {
         let lang = isEng ? 'en' : 'ru';
         store.setInitialState();
         infoStore.setInitialState();
-        store.changeLangText(lang);
-        navigate('/main');
+        navigate('/main', {state:{lang}});
     }
+
     return (
         <div className="title-wrap">
         <div className='title-block'>

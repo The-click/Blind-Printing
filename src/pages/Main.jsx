@@ -4,71 +4,42 @@ import '../App.css';
 import InfoBlock from '../components/InfoBlocks/InfoBlock';
 import { observer } from "mobx-react-lite" 
 import store from '../store/store';
-import InputTextForm from '../components/InputTextForm';
 import { getTextService } from '../API/GetTextService';
-import { wrapSpanText } from '../utils/wrapSpanText';
 import ControlButtons from '../components/ControlButtons';
-import StopScreen from './StopScreen';
 import Loader from '../utils/Loader';
-import infoStore from '../store/infoStore';
-import FinalScreen from './FinalScreen';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, useLocation} from 'react-router-dom';
+import TypedText from '../components/TypedText';
 
 
  const Main = observer(() =>  {
-  let printText = store.printText;
-  let navigate = useNavigate();
-
-
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isEnd = store.isEnd;
 
   useEffect( () => {
-    if (store.lang === '') {
+    if (!location.state || isEnd) {
       navigate('/start');
       return;
     }
     async function setNewText(){
-      let data = await getTextService(store.lang);
-      store.setNewText(data);
-      store.setPrintText(wrapSpanText());
+      let data = await getTextService(location.state.lang);
+      store.setNewText(data.split(''));
     }
    
   setNewText();
   }, []);
 
-  function stopHandler(e){
-    if (e.code !== 'Escape' || store.countPrintedLetter === 0) return;
-    infoStore.stopPrint();
-  }
-
-
-  if (store.printText.length === 0){
-    return (<Loader></Loader>)
-  }
-
-  if (store.isEnd){
-    return (<FinalScreen></FinalScreen>)
+  if (store.fullText.length === 0){
+    return (<Loader></Loader>);
   }
 
   return (
-    <div className="main-wrap" onKeyDown={stopHandler}>
-      {infoStore.stopPrintedData.isStop && <StopScreen></StopScreen>}
-
-      <div className='main'>
-      {store.countPrintedLetter === 0 && <span className='tooltip'>Для паузы можно нажать "Esc"</span>}
-   
-      <div className='container__text' style={{}}>
-        {printText}
-      </div>
-      <InputTextForm></InputTextForm>
-
-      </div>
+    <div className="main-wrap" >
+      <TypedText />     
        <div className='right__block'>
         <InfoBlock   />
        <ControlButtons />
-
        </div>
-      
-       {/* <HelloScreen></HelloScreen> */}
     </div>
   );
 })

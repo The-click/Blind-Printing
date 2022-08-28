@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 import infoStore from '../store/infoStore';
 import ControlButtons from '../components/ControlButtons';
 
-const StopScreen = observer((props) => {
+const StopScreen = observer(() => {
     const coverEl = useRef(null);
+    
     useEffect(() => {coverEl.current.focus()}, []);
+
     function stopHandler(e){
         if (e.code !== 'Escape') return;
         infoStore.stopPrint();
@@ -16,9 +18,7 @@ const StopScreen = observer((props) => {
     return (
         <div className='cover stop-screen' onKeyDown={stopHandler} ref={coverEl} tabIndex={0}>
             <span className='stop-screen__word'>пауза</span>
-            <ControlButtons />
-
-            
+            <ControlButtons />   
         </div>
     );
 })

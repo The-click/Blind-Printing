@@ -4,10 +4,10 @@ import infoStore from '../../store/infoStore';
 import store from '../../store/store';
 
  const Accuracy = observer(() => {
-    let countAccuracy = (100 - (100 / store.printText.length ) * infoStore.countError).toFixed(1);
+    let countAccuracy = (100 - (100 / store.fullText.length ) * store.errorData.countError).toFixed(1);
+    
     infoStore.setAccuracy(countAccuracy);
     
-
     return (
         <div className='accuracy'>
             <div>Точность</div>

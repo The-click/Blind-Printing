@@ -1,12 +1,13 @@
-import store from "../store/store";
 
-export const wrapSpanText = (lenText = store.printText.length) => {
-    let text = store.fullText;
-        return text.split('').map((el, i) => {
+export const wrapSpanText = (fullText, elemIndex, isError) => {
+        return fullText.map((el, i) => {
           let classElement = '';
-          if ((i === lenText)){
-            classElement = 'letter__green';
+          if (i === elemIndex){
+            classElement = isError ? 'error' : 'letter__green';
           }
-          return (<span className={classElement} key={el + i }>{el}</span>)})
-    
+          if (i < elemIndex){
+            classElement = 'letter__printed';
+          }
+          return (<span className={classElement} key={el + i }>{el}</span>)})  
 }
+
