@@ -5,7 +5,8 @@ class Store{
     fullText = [];
     countPrintedLetter = 0;
     isEnd = false;
-    errorData = {isError: false, countError:0}
+    errorData = {isError: false, countError:0};
+   
 
     constructor(){
         makeAutoObservable(this);
@@ -29,13 +30,12 @@ class Store{
         this.countPrintedLetter += 1;
         if (this.countPrintedLetter === this.fullText.length) {
             this.isEnd = true;
-        };                          
+        };                        
     }
 
     setErrorText(){
         this.errorData = {isError:true, countError:++this.errorData.countError};
     }
-
 }
 
 export default new Store()

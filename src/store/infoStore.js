@@ -2,7 +2,7 @@ import {  makeAutoObservable } from "mobx"
 
 class InfoStore{
 
-    stopPrintedData = {isStop:false, timeStop: 0, startTime:0};
+    stopPrintedData = {isStop:false, timeStop: 0};
     speedPrint = 0;
     accuracy = 0;
 
@@ -11,7 +11,7 @@ class InfoStore{
     }
     
     setInitialState(){
-        this.stopPrintedData = {isStop:false, timeStop: 0, startTime:0};
+        this.stopPrintedData = {isStop:false, timeStop: 0};
         this.speedPrint = 0;
         this.accuracy = 0;
     }
@@ -24,15 +24,8 @@ class InfoStore{
     }
  
     stopPrint(){
-        let thisData = this.stopPrintedData;
-        if (this.stopPrintedData.isStop){
-            this.stopPrintedData = {isStop:false, 
-                                    timeStop: (+new Date() - thisData.startTime) + thisData.timeStop,
-                                    startTime: 0}
-        }else{
-            this.stopPrintedData.isStop = true;
-            this.stopPrintedData.startTime = +new Date();
-        }
+        this.stopPrintedData.isStop = !this.stopPrintedData.isStop;
+        this.stopPrintedData.timeStop = +new Date() - this.stopPrintedData.timeStop;
     }
 }
 
